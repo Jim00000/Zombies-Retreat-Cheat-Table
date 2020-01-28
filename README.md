@@ -12,6 +12,10 @@ Visit https://sirensdomain.itch.io/zombiesretreat for more game information
 
 I found out that this game sometimes crashes while the cheat is activated. To avoid game crash, activate the cheat while the game menu is open and deactivate the cheat before leaving the game menu. Be sure to click "Item" entry in the game menu to make cheat take effect.   
 
+# How to select correct process
+
+"File" -> "Open Process" to open "Process List" windows. Click "Processes" tab, You will see list like "000004AC - svchost.exe". There are four processes likes "00001CF0-Zombie's Retreat - Beta x.xx.x.exe". Only one process is actually that our cheat takes effect. But which one ? You can use speedhack (there is a "Enable speedhack" checkbox) to check which process autually got influenced and that's what we want.
+
 # Change Log
 
 ## 01.28.2020 update
