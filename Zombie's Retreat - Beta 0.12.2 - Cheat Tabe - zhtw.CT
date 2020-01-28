@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"========== Zombie's Retreat - Beta 0.12.2 秘技表 - By Jim00000 =========="</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"[NUM1] 使目前使用的裝備...(無限子彈,無限藥品)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscan(INJECTION_CURRENT_EQUIPMENT,03 D1 FF 3B DF 73 20 8D 0C 9D 07 00 00 00 8B 5C 24 0C 89 1C 08 BE 00 00 F8 FF) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+registersymbol(INJECTION_CURRENT_EQUIPMENT)
+
+newmem:
+  mov [eax+ecx], #198
+code:
+  //mov [eax+ecx],ebx
+  mov esi,FFF80000
+  jmp return
+
+INJECTION_CURRENT_EQUIPMENT+12:
+  jmp newmem
+  nop 3
+return:
+
+[DISABLE]
+
+INJECTION_CURRENT_EQUIPMENT+12:
+  db 89 1C 08 BE 00 00 F8 FF
+
+unregistersymbol(INJECTION_CURRENT_EQUIPMENT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 0E309ACB
+
+0E309AAF: 74 06                 -  je 0E309AB7
+0E309AB1: EB 2D                 -  jmp 0E309AE0
+0E309AB3: 89 CB                 -  mov ebx,ecx
+0E309AB5: D1 FB                 -  sar ebx,1
+0E309AB7: 8B 78 03              -  mov edi,[eax+03]
+0E309ABA: D1 FF                 -  sar edi,1
+0E309ABC: 3B DF                 -  cmp ebx,edi
+0E309ABE: 73 20                 -  jae 0E309AE0
+0E309AC0: 8D 0C 9D 07 00 00 00  -  lea ecx,[ebx*4+00000007]
+0E309AC7: 8B 5C 24 0C           -  mov ebx,[esp+0C]
+// ---------- INJECTING HERE ----------
+0E309ACB: 89 1C 08              -  mov [eax+ecx],ebx
+0E309ACE: BE 00 00 F8 FF        -  mov esi,FFF80000
+// ---------- DONE INJECTING  ----------
+0E309AD3: 23 F0                 -  and esi,eax
+0E309AD5: F6 46 04 04           -  test byte ptr [esi+04],04
+0E309AD9: 75 1D                 -  jne 0E309AF8
+0E309ADB: 89 D8                 -  mov eax,ebx
+0E309ADD: C2 0C 00              -  ret 000C
+0E309AE0: 51                    -  push ecx
+0E309AE1: FF 74 24 04           -  push [esp+04]
+0E309AE5: BB 90 34 41 10        -  mov ebx,nw.dll+D83490
+0E309AEA: B8 05 00 00 00        -  mov eax,00000005
+0E309AEF: 89 54 24 08           -  mov [esp+08],edx
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>97</Key>
+          </Keys>
+          <ID>0</ID>
+          <ActivateSound TTS="EN">Cheat Activated</ActivateSound>
+          <DeactivateSound TTS="EN">Cheat Deactivated</DeactivateSound>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"[NUM2] 所有物品x90"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECTION_ALL_ITEMS,nw.dll,8B 44 B8 07 8B 4D DC) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+registersymbol(INJECTION_ALL_ITEMS)
+
+newmem:
+  mov [eax+edi*4+07], #180
+code:
+  mov eax,[eax+edi*4+07]
+  mov ecx,[ebp-24]
+  jmp return
+
+INJECTION_ALL_ITEMS:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+
+INJECTION_ALL_ITEMS:
+  db 8B 44 B8 07 8B 4D DC
+
+unregistersymbol(INJECTION_ALL_ITEMS)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "nw.dll"+CD964D
+
+"nw.dll"+CD962A: 8B 51 FF           -  mov edx,[ecx-01]
+"nw.dll"+CD962D: 83 C1 0C           -  add ecx,0C
+"nw.dll"+CD9630: 8D 58 04           -  lea ebx,[eax+04]
+"nw.dll"+CD9633: 0F B7 52 07        -  movzx edx,word ptr [edx+07]
+"nw.dll"+CD9637: 81 FA 24 04 00 00  -  cmp edx,00000424
+"nw.dll"+CD963D: 0F 44 D9           -  cmove ebx,ecx
+"nw.dll"+CD9640: 8B 4B FF           -  mov ecx,[ebx-01]
+"nw.dll"+CD9643: D1 F9              -  sar ecx,1
+"nw.dll"+CD9645: 39 F9              -  cmp ecx,edi
+"nw.dll"+CD9647: 0F 86 FC 00 00 00  -  jbe nw.dll+CD9749
+// ---------- INJECTING HERE ----------
+"nw.dll"+CD964D: 8B 44 B8 07        -  mov eax,[eax+edi*4+07]
+"nw.dll"+CD9651: 8B 4D DC           -  mov ecx,[ebp-24]
+// ---------- DONE INJECTING  ----------
+"nw.dll"+CD9654: 39 41 44           -  cmp [ecx+44],eax
+"nw.dll"+CD9657: 0F 84 EC 00 00 00  -  je nw.dll+CD9749
+"nw.dll"+CD965D: 83 7D 10 01        -  cmp dword ptr [ebp+10],01
+"nw.dll"+CD9661: 0F 85 CD 00 00 00  -  jne nw.dll+CD9734
+"nw.dll"+CD9667: 8B 5D DC           -  mov ebx,[ebp-24]
+"nw.dll"+CD966A: 89 D9              -  mov ecx,ebx
+"nw.dll"+CD966C: 6A 00              -  push 00
+"nw.dll"+CD966E: 57                 -  push edi
+"nw.dll"+CD966F: 8D 45 EC           -  lea eax,[ebp-14]
+"nw.dll"+CD9672: 50                 -  push eax
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>98</Key>
+          </Keys>
+          <ID>0</ID>
+          <ActivateSound TTS="EN">Cheat Activated</ActivateSound>
+          <DeactivateSound TTS="EN">Cheat  Deactivated</DeactivateSound>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"[NUM3] 目前持有物品x90"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECTION_HELD_ITEMS,nw.dll,8B 44 B8 07 8B 4D DC) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+registersymbol(INJECTION_HELD_ITEMS)
+
+newmem:
+  cmp [eax+edi*4+07], #200
+  jge code
+  mov [eax+edi*4+07], #180
+
+code:
+  mov eax,[eax+edi*4+07]
+  mov ecx,[ebp-24]
+  jmp return
+
+INJECTION_HELD_ITEMS:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+
+INJECTION_HELD_ITEMS:
+  db 8B 44 B8 07 8B 4D DC
+
+unregistersymbol(INJECTION_HELD_ITEMS)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "nw.dll"+CD964D
+
+"nw.dll"+CD962A: 8B 51 FF           -  mov edx,[ecx-01]
+"nw.dll"+CD962D: 83 C1 0C           -  add ecx,0C
+"nw.dll"+CD9630: 8D 58 04           -  lea ebx,[eax+04]
+"nw.dll"+CD9633: 0F B7 52 07        -  movzx edx,word ptr [edx+07]
+"nw.dll"+CD9637: 81 FA 24 04 00 00  -  cmp edx,00000424
+"nw.dll"+CD963D: 0F 44 D9           -  cmove ebx,ecx
+"nw.dll"+CD9640: 8B 4B FF           -  mov ecx,[ebx-01]
+"nw.dll"+CD9643: D1 F9              -  sar ecx,1
+"nw.dll"+CD9645: 39 F9              -  cmp ecx,edi
+"nw.dll"+CD9647: 0F 86 FC 00 00 00  -  jbe nw.dll+CD9749
+// ---------- INJECTING HERE ----------
+"nw.dll"+CD964D: 8B 44 B8 07        -  mov eax,[eax+edi*4+07]
+"nw.dll"+CD9651: 8B 4D DC           -  mov ecx,[ebp-24]
+// ---------- DONE INJECTING  ----------
+"nw.dll"+CD9654: 39 41 44           -  cmp [ecx+44],eax
+"nw.dll"+CD9657: 0F 84 EC 00 00 00  -  je nw.dll+CD9749
+"nw.dll"+CD965D: 83 7D 10 01        -  cmp dword ptr [ebp+10],01
+"nw.dll"+CD9661: 0F 85 CD 00 00 00  -  jne nw.dll+CD9734
+"nw.dll"+CD9667: 8B 5D DC           -  mov ebx,[ebp-24]
+"nw.dll"+CD966A: 89 D9              -  mov ecx,ebx
+"nw.dll"+CD966C: 6A 00              -  push 00
+"nw.dll"+CD966E: 57                 -  push edi
+"nw.dll"+CD966F: 8D 45 EC           -  lea eax,[ebp-14]
+"nw.dll"+CD9672: 50                 -  push eax
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>99</Key>
+          </Keys>
+          <ID>0</ID>
+          <ActivateSound TTS="EN">Cheat Activated</ActivateSound>
+          <DeactivateSound TTS="EN">Cheat Deactivated</DeactivateSound>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Game         : Zombie's Retreat
+Process Name : Zombie's Retreat - Beta 0.12.2.exe
+Author       : Jim00000
+Last Update  : 01.28.2020
+CE Version   : 7.0
+URL          : 
+[Cheat Table Contents]
+- Make current equipment ... (infinite ammo if the equipment is pistol, infinite Herb, etc.)
+- Get all of items x90
+- Set held items x90
+[ChangeLog]
+01.28.2020 update
+- Initial release for Beta 0.12.2
+[MIT License]
+Copyright (c) 2020 Jim00000
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</Comments>
+</CheatTable>
