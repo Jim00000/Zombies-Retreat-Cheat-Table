@@ -5,9 +5,9 @@ Notice that this cheat table only supports Cheat Engine 7.0 or above
 
 # Cheat Table Content
 
-- (HotKey : NUM1) Make current equipment ... (infinite ammo if the equipment is pistol, infinite Herb, etc.). Press "Q" key to make value change
-- (HotKey : NUM2) Get all of items x90 (See Note 1)
-- (HotKey : NUM3) Set held items x90 (See Note 1)
+- All kinds of ammo x99 & medicinal herb x99. fire your guns or use herbs to make value change
+- Get all of items x90 (See Note 1)
+- Set held items x90 (See Note 1)
 
 ## Note 1
 
@@ -23,6 +23,10 @@ I found out that this game sometimes crashes while the cheat is activated. To av
 
 # Change Log
 
+## 05.08.2020 update
+- Support for beta 0.13.2 version
+- Translate from Mandarin (zh-tw) to English (en)
+- Upgrade "Make current equipment ..." cheat, fix bugs of "Make current equipment ..." cheat and rename "Make current equipment ..." cheat as "All kinds of ammo x99 & medicinal herb x99"
 ## 01.28.2020 update
 - Initial release for Beta 0.12.2
 
