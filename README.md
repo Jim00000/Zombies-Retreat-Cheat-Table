@@ -5,7 +5,7 @@ Notice that this cheat table only supports Cheat Engine 7.0 or above
 
 # Cheat Table Content
 
-- All kinds of ammo x99 & medicinal herb x99. fire your guns or use herbs to make value change
+- All kinds of ammo x99 & medicinal herb x99 (Fire your guns or use herbs to make value change)
 - Get all of items x90 (See Note 1)
 - Set held items x90 (See Note 1)
 
