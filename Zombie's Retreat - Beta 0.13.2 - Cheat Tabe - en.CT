@@ -3,14 +3,14 @@
   <CheatEntries>
     <CheatEntry>
       <ID>5</ID>
-      <Description>"========== Zombie's Retreat - Beta 0.12.2 秘技表 - By Jim00000 =========="</Description>
+      <Description>"========== Zombie's Retreat - Beta 0.13.2 Cheat Table - By Jim00000 =========="</Description>
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
       <ID>1</ID>
-      <Description>"[NUM1] 使目前使用的裝備...(無限子彈,無限藥品)"</Description>
-      <LastState/>
+      <Description>"All kinds of ammo x99 &amp; medicinal herb x99 (fire your guns or use herbs to activate)"</Description>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -19,15 +19,36 @@ alloc(newmem,$1000)
 
 label(code)
 label(return)
+label(exit)
 
 registersymbol(INJECTION_CURRENT_EQUIPMENT)
 
 newmem:
-  mov [eax+ecx], #198
+  // pistol ammo
+  cmp ecx, 23
+  je change
+  // crossbow ammo
+  cmp ecx, 7F
+  je change
+  // shotgun ammo
+  cmp ecx, BF
+  je change
+  // medicinal herb
+  cmp ecx, 1B
+  je change
+
 code:
-  //mov [eax+ecx],ebx
+  mov [eax+ecx],ebx
+exit:
   mov esi,FFF80000
   jmp return
+
+change:
+  mov [eax+23], #198
+  mov [eax+1B], #198
+  mov [eax+7F], #198
+  mov [eax+BF], #198
+  jmp exit
 
 INJECTION_CURRENT_EQUIPMENT+12:
   jmp newmem
@@ -71,21 +92,10 @@ dealloc(newmem)
 0E309AEF: 89 54 24 08           -  mov [esp+08],edx
 }
 </AssemblerScript>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Toggle Activation</Action>
-          <Keys>
-            <Key>97</Key>
-          </Keys>
-          <ID>0</ID>
-          <ActivateSound TTS="EN">Cheat Activated</ActivateSound>
-          <DeactivateSound TTS="EN">Cheat Deactivated</DeactivateSound>
-        </Hotkey>
-      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>3</ID>
-      <Description>"[NUM2] 所有物品x90"</Description>
+      <Description>"All items x90 (it is not recommended to use)"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
@@ -147,21 +157,10 @@ dealloc(newmem)
 "nw.dll"+CD9672: 50                 -  push eax
 }
 </AssemblerScript>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Toggle Activation</Action>
-          <Keys>
-            <Key>98</Key>
-          </Keys>
-          <ID>0</ID>
-          <ActivateSound TTS="EN">Cheat Activated</ActivateSound>
-          <DeactivateSound TTS="EN">Cheat  Deactivated</DeactivateSound>
-        </Hotkey>
-      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>4</ID>
-      <Description>"[NUM3] 目前持有物品x90"</Description>
+      <Description>"Held items x90"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
@@ -226,33 +225,25 @@ dealloc(newmem)
 "nw.dll"+CD9672: 50                 -  push eax
 }
 </AssemblerScript>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Toggle Activation</Action>
-          <Keys>
-            <Key>99</Key>
-          </Keys>
-          <ID>0</ID>
-          <ActivateSound TTS="EN">Cheat Activated</ActivateSound>
-          <DeactivateSound TTS="EN">Cheat Deactivated</DeactivateSound>
-        </Hotkey>
-      </Hotkeys>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
   <Comments>Game         : Zombie's Retreat
-Process Name : Zombie's Retreat - Beta 0.12.2.exe
+Process Name : Zombie's Retreat - Beta 0.13.2.exe
 Author       : Jim00000
-Last Update  : 01.28.2020
+Last Update  : 05.08.2020
 CE Version   : 7.0
-URL          : 
 [Cheat Table Contents]
-- Make current equipment ... (infinite ammo if the equipment is pistol, infinite Herb, etc.)
+- All kinds of ammo x99 &amp; medicinal herb x99
 - Get all of items x90
 - Set held items x90
 [ChangeLog]
+05.08.2020 update
+- support for beta 0.13.2
+- Translate from Mandarin (zh-tw) to English (en)
+- Upgrade "Make current equipment ..." cheat, fix bugs of "Make current equipment ..." cheat and rename "Make current equipment ..." cheat as "All kinds of ammo x99 &amp; medicinal herb x99"
 01.28.2020 update
-- Initial release for Beta 0.12.2
+- initial release for beta 0.12.2
 [MIT License]
 Copyright (c) 2020 Jim00000
 Permission is hereby granted, free of charge, to any person obtaining a copy
