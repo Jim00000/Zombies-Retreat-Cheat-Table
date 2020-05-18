@@ -19,7 +19,27 @@ I found out that this game sometimes crashes while the cheat is activated. To av
 
 # How to select correct process
 
-"File" -> "Open Process" to open "Process List" windows. Click "Processes" tab, You will see list like "000004AC - svchost.exe". There are four processes likes "00001CF0-Zombie's Retreat - Beta x.xx.x.exe". Only one process is actually that our cheat takes effect. But which one ? You can use speedhack (there is a "Enable speedhack" checkbox) to check which process autually got influenced and that's what we want.
+## Use SpeedHack
+Run Zombie's Retreat executable at first. Open Cheat Engine, "File" -> "Open Process" to open "Process List" windows. Click "Processes" tab, You will see list like "000004AC - svchost.exe". There are four processes likes "00001CF0-Zombie's Retreat - Beta x.xx.x.exe". Only one process is actually that our cheat takes effect. But which one ? You can use speedhack (there is a "Enable speedhack" checkbox) to check which process autually got influenced and that's what we want.
+
+![Imgur](https://i.imgur.com/oJEbPll.png)
+![Imgur](https://i.imgur.com/fsYC94G.gif)
+
+## Use task manager in Windows (Simple but not 100% accurate, maybe)
+
+Run Zombie's Retreat executable at first. Open task manager (shortcut: Ctrl+Shift+Esc), open "Details" tab, you can find 4 "Zombie's Retreat - Beta x.xx.x.exe" processes. Find the process which uses the most memory, and use calculator application with "Programmer" mode to convert its PID from decimal format to heximal format. Match that value in the Process List window of Cheat Engine program.
+
+![Imgur](https://i.imgur.com/lr7L1qZ.gif)
+
+# Demo
+
+## All kinds of ammo x99 & medicinal herb x99
+
+![Imgur](https://i.imgur.com/0MaD6vb.gif)
+
+## Set held items x90
+
+![Imgur](https://i.imgur.com/2HPr8Zf.gif)
 
 # Change Log
 
