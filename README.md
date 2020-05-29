@@ -1,7 +1,7 @@
 # Zombies-Retreat-Cheat-Table
 
 Visit https://sirensdomain.itch.io/zombiesretreat for more game information <br/>
-Notice that this cheat table only supports Cheat Engine 7.0 or above
+Notice that this cheat table only supports Cheat Engine 7.1 or above
 
 # Cheat Table Content
 
@@ -42,6 +42,9 @@ Run Zombie's Retreat executable at first. Open task manager (shortcut: Ctrl+Shif
 ![Imgur](https://i.imgur.com/2HPr8Zf.gif)
 
 # Change Log
+
+## 05.29.2020 update
+- Support for beta 0.14.4 version
 
 ## 05.08.2020 update
 - Support for beta 0.13.2 version
