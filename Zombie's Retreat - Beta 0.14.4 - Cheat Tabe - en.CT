@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="29">
+<CheatTable CheatEngineTableVersion="31">
   <CheatEntries>
     <CheatEntry>
       <ID>5</ID>
-      <Description>"========== Zombie's Retreat - Beta 0.13.2 Cheat Table - By Jim00000 =========="</Description>
+      <Description>"========== Zombie's Retreat - Beta 0.14.4 Cheat Table - By Jim00000 =========="</Description>
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
       <ID>1</ID>
       <Description>"All kinds of ammo x99 &amp; medicinal herb x99 (fire your guns or use herbs to activate)"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -229,15 +229,17 @@ dealloc(newmem)
   </CheatEntries>
   <UserdefinedSymbols/>
   <Comments>Game         : Zombie's Retreat
-Process Name : Zombie's Retreat - Beta 0.13.2.exe
+Process Name : Zombie's Retreat - Beta 0.14.4.exe
 Author       : Jim00000
-Last Update  : 05.08.2020
-CE Version   : 7.0
+Last Update  : 05.29.2020
+CE Version   : 7.1
 [Cheat Table Contents]
 - All kinds of ammo x99 &amp; medicinal herb x99
 - Get all of items x90
 - Set held items x90
 [ChangeLog]
+05.29.2020 update
+- support for beta 0.14.4
 05.08.2020 update
 - support for beta 0.13.2
 - Translate from Mandarin (zh-tw) to English (en)
