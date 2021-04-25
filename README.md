@@ -3,6 +3,10 @@
 Visit https://sirensdomain.itch.io/zombiesretreat for more game information <br/>
 Notice that this cheat table only supports Cheat Engine 7.1 or above
 
+## About Zombie's Retreat 2: Gridlocked
+
+[Zombie's Retreat 2: Gridlocked](https://sirensdomain.itch.io/zombies-retreat-2) is out now. In fact, a few cheats still take effect on Zombie's Retreat 2 but the others are broken. You may try my another [repository](https://github.com/Jim00000/Zombies-Retreat-2-Cheat-Script) for Zombie's Retreat 2 in a different implementation of cheat which use javascript instead of Cheat Engine.
+
 # Cheat Table Content
 
 - All kinds of ammo x99 & medicinal herb x99 (Fire your guns or use herbs to make value change)
